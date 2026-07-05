@@ -1,0 +1,15 @@
+{
+  // Static-assets Worker: serves the Next.js static export in ./out.
+  // No `main` script — this is a pure static site, so there is no server code.
+  // Committing this file also stops `wrangler deploy` from auto-detecting
+  // Next.js and trying to convert the site to the OpenNext SSR adapter
+  // (which fails here because `output: 'export'` produces no server bundle).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "saferidelandingpage",
+  "compatibility_date": "2026-07-05",
+  "assets": {
+    "directory": "./out",
+    // Serve out/404.html for unknown paths.
+    "not_found_handling": "404-page"
+  }
+}
