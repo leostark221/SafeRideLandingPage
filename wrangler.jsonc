@@ -11,5 +11,13 @@
     "directory": "./out",
     // Serve out/404.html for unknown paths.
     "not_found_handling": "404-page"
-  }
+  },
+  // Bind the Worker to the real domain (double-R). On deploy, wrangler creates
+  // the custom domain + proxied DNS records in the saferride.org zone, which is
+  // already on Cloudflare. Note: saferide.org (single R) is a DIFFERENT domain
+  // owned by someone else — do not use it.
+  "routes": [
+    { "pattern": "saferride.org", "custom_domain": true },
+    { "pattern": "www.saferride.org", "custom_domain": true }
+  ]
 }
